@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "pUZsOCqzRebzcH3XKIKnGcoqG50CUfg4AnEd+xUQ17qY1mTqYF2wY931CtjGRUyl2WHSXwHyOu5oXpgomdAfZg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\bryan\\programacion\\Necli.Presentacion\\Necli.Entidades\\Necli.Entidades.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Usuario\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

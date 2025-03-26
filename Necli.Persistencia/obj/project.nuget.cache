@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "8DrnMi7w36bGggeB7PPb7Hy15FtCm3TgXgzjJZkI1P54dbEMe1WomS2bDwTHnZcgzf628A5ETbe+/vE+BPOGkg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\bryan\\programacion\\Necli.Presentacion\\Necli.Persistencia\\Necli.Persistencia.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Usuario\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

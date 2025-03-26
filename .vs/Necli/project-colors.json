@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "1e501018-fa7c-4e65-a8eb-c7c5e7299ad8": {
+      "ProjectGuid": "1e501018-fa7c-4e65-a8eb-c7c5e7299ad8",
+      "DisplayName": "Necli.Presentacion",
+      "ColorIndex": 0
+    },
+    "819c3c49-9c72-4e1a-9f8e-a3ef207c8257": {
+      "ProjectGuid": "819c3c49-9c72-4e1a-9f8e-a3ef207c8257",
+      "DisplayName": "Necli.Persistencia",
+      "ColorIndex": 1
+    },
+    "1d828e5b-6cec-427e-9d30-d8b1631d4de5": {
+      "ProjectGuid": "1d828e5b-6cec-427e-9d30-d8b1631d4de5",
+      "DisplayName": "Necli.Logica",
+      "ColorIndex": 2
+    },
+    "98daba43-0ebf-4f19-ad8e-593fd392b968": {
+      "ProjectGuid": "98daba43-0ebf-4f19-ad8e-593fd392b968",
+      "DisplayName": "Necli.Entidades",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
