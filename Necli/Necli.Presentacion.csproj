@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Necli.Entidades\Necli.Entidades.csproj" />
+    <ProjectReference Include="..\Necli.Logica\Necli.Logica.csproj" />
   </ItemGroup>
 
 </Project>

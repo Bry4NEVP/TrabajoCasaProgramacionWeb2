@@ -1,0 +1,5 @@
+C:\Users\Usuario\Desktop\bryan\programacion\Necli.Presentacion\Necli.Entidades\obj\Debug\net6.0\Necli.Entidades.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\bryan\programacion\Necli.Presentacion\Necli.Entidades\obj\Debug\net6.0\Necli.Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Desktop\bryan\programacion\Necli.Presentacion\Necli.Entidades\obj\Debug\net6.0\Necli.Entidades.AssemblyInfoInputs.cache
+C:\Users\Usuario\Desktop\bryan\programacion\Necli.Presentacion\Necli.Entidades\obj\Debug\net6.0\Necli.Entidades.AssemblyInfo.cs
+C:\Users\Usuario\Desktop\bryan\programacion\Necli.Presentacion\Necli.Entidades\obj\Debug\net6.0\Necli.Entidades.csproj.CoreCompileInputs.cache

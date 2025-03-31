@@ -1,6 +1,7 @@
 ﻿using Necli.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,68 +13,50 @@ namespace Necli.Persistencia
         private readonly string _cadena_conexion = "Server=SJLBA01SALAA18\\SQLEXPRESS; Database=VehiGestion;User ID=sa;Password=cecar; TrustServerCertificate=True;";
         private string sql;
 
-        public bool RegistrarCuenta(Cuenta cuenta )
+        public void CrearCuenta(Cuenta cuenta)
         {
-
-
             using (var conexion = new SqlConnection(_cadena_conexion))
             {
-
-                sql = @"INSERT INTO Cuentas(Numero,Saldo,FechaCreacion) 
-                    VALUES(@PNumero,@Saldo,@FechaCreacion)";
-
+                string sql = @"INSERT INTO Cuentas (Numero, Saldo, FechaCreacion, UsuarioIdentificacion) 
+                               VALUES (@Numero, @Saldo, @FechaCreacion, @UsuarioIdentificacion)";
 
                 using (var comando = new SqlCommand(sql, conexion))
                 {
-
-
                     comando.Parameters.AddWithValue("@Numero", cuenta.Numero);
                     comando.Parameters.AddWithValue("@Saldo", cuenta.Saldo);
-                    comando.Parameters.AddWithValue("@FechaCreacion", DateTime.Now);
+                    comando.Parameters.AddWithValue("@FechaCreacion", cuenta.FechaCreacion);
                     comando.Parameters.AddWithValue("@UsuarioIdentificacion", cuenta.UsuarioIdentificacion);
                     conexion.Open();
                     comando.ExecuteNonQuery();
-
                 }
-
             }
-
-
-            return true;
-
         }
 
-        public Cuenta ConsultarCuenta(string Numero)
+        public Cuenta ConsultarCuenta(string numero)
         {
             using (var conexion = new SqlConnection(_cadena_conexion))
             {
-                sql = "SELECT * FROM Cuentas WHERE Numero=@Numero";
+                string sql = "SELECT * FROM Cuentas WHERE Numero = @Numero";
 
                 using (var comando = new SqlCommand(sql, conexion))
                 {
-
-                    comando.Parameters.AddWithValue("@Numero", Numero);
+                    comando.Parameters.AddWithValue("@Numero", numero);
                     conexion.Open();
                     var lector = comando.ExecuteReader();
 
-                    while (lector.Read())
+                    if (lector.Read())
                     {
-                        var cuenta = new Cuenta
+                        return new Cuenta
                         {
-
                             Numero = lector["Numero"].ToString(),
-                            Saldo = Convert.ToInt32(lector["Saldo"].ToString()),
-                            FechaCreacion = DateTime.Parse(lector["FechaCreacion"].ToString())
-
+                            Saldo = Convert.ToDecimal(lector["Saldo"]),
+                            FechaCreacion = Convert.ToDateTime(lector["FechaCreacion"]),
+                            UsuarioIdentificacion = lector["UsuarioIdentificacion"].ToString()
                         };
-                        return cuenta;
-
                     }
                 }
             }
-
             return null;
-
         }
         public bool EliminarCuenta(string numero)
         {
@@ -85,16 +68,12 @@ namespace Necli.Persistencia
                 {
                     comando.Parameters.AddWithValue("@Numero", numero);
                     conexion.Open();
-
                     int filasAfectadas = comando.ExecuteNonQuery();
-
-                    // Retorna true si se eliminó exactamente 1 fila
-                    return filasAfectadas == 1;
+                    return filasAfectadas > 0;
                 }
             }
         }
-
-
     }
 }
-}
+
+

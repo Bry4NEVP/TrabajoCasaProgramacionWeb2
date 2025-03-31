@@ -7,7 +7,7 @@ namespace Necli.Entidades
     {
         public string Numero { get; set; } 
 
-        public Required decimal Saldo { get; set; }
+        public decimal Saldo { get; set; }
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 

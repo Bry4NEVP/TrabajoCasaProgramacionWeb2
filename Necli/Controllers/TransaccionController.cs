@@ -1,43 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Necli.Entidades;
+using Necli.Logica; // Agrega el espacio de nombres del servicio
+using Necli.Logica.Dto; // Agrega el espacio de nombres de los DTOs
+
 
 namespace Necli.Presentacion.Controllers
 {
     public class TransaccionController : Controller
     {
-        private readonly ITransaccionService _transaccionService;
+        private readonly TransaccionService _transaccionService = new();
 
-        public TransaccionController(ITransaccionService transaccionService)
-        {
-            _transaccionService = transaccionService;
-        }
-
-        // Realizar una nueva transacción
         [HttpPost]
-        public IActionResult RealizarTransaccion([FromBody] Transaccion transaccion)
+        public IActionResult RealizarTransaccion([FromBody] CrearTransaccionDto transaccionDto)
         {
             try
             {
-                var transaccionRealizada = _transaccionService.RealizarTransaccion(transaccion);
-                return CreatedAtAction(nameof(ConsultarTransacciones), new { NumeroCuenta = transaccion.NumeroCuentaOrigen }, transaccionRealizada);
+                var transaccion = _transaccionService.RealizarTransaccion(transaccionDto);
+                return Ok(transaccion);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return BadRequest(new { mensaje = ex.Message });
+                return BadRequest(new { mensaje = "No se pudo realizar la transacción. Verifique los datos." });
             }
-        }
-
-        // Consultar transacciones por número de cuenta y rango de fechas
-        [HttpGet("{NumeroCuenta}/{desde?}/{hasta?}")]
-        public IActionResult ConsultarTransacciones(string NumeroCuenta, DateTime? desde = null, DateTime? hasta = null)
-        {
-            var transacciones = _transaccionService.ConsultarTransacciones(NumeroCuenta, desde, hasta);
-            if (transacciones == null)
-            {
-                return NotFound(new { mensaje = "No se encontraron transacciones." });
-            }
-
-            return Ok(transacciones);
         }
 
     }

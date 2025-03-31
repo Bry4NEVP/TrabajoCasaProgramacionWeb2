@@ -1,15 +1,17 @@
 ﻿using Necli.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Necli.Persistencia
 {
-    internal class TransaccionRepository
+    public class TransaccionRepository
     {
         private readonly string _cadena_conexion = "Server=SJLBA01SALAA18\\SQLEXPRESS; Database=VehiGestion; User ID=sa; Password=cecar; TrustServerCertificate=True;";
+
 
         // Registrar una nueva transacción
         public bool RegistrarTransaccion(Transaccion transaccion)
@@ -64,22 +66,22 @@ namespace Necli.Persistencia
                     {
                         while (reader.Read())
                         {
-                            transacciones.Add(new Transaccion
-                            {
-                                Numero = reader["Numero"].ToString(),
-                                Fecha = Convert.ToDateTime(reader["Fecha"]),
-                                NumeroCuentaOrigen = reader["NumeroCuentaOrigen"].ToString(),
-                                NumeroCuentaDestino = reader["NumeroCuentaDestino"].ToString(),
-                                Monto = Convert.ToDecimal(reader["Monto"]),
-                                Tipo = reader["Tipo"].ToString()
-                            });
+                            transacciones.Add(new Transaccion(
+                                reader["NumeroCuentaOrigen"].ToString(),
+                                reader["NumeroCuentaDestino"].ToString(),
+                                Convert.ToDecimal(reader["Monto"]),
+                                reader["Tipo"].ToString()
+                            ));
                         }
                     }
                 }
             }
 
-            return transacciones;
+            return transacciones; // Retorna la lista, incluso si está vacía
+        }
+    }
+
         }
 
-    }
-}
+    
+

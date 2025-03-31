@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "Y6BtSiOI5s0lN6PWOIQAYS+/VO4yxm12rergViTW78bh3/wAv5dysMdaGZv65lay/9xP9VE/JkQgjic2qAsW1A==",
+  "dgSpecHash": "/TM3UCWmZRGILloY3pURmoDGyaoyCblYMfR1QjdgpyageKqFgIFkYD3tmq9mkDlfnajLkUwnB4SbhiMW+KB5aQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Usuario\\Desktop\\bryan\\programacion\\Necli.Presentacion\\Necli.Logica\\Necli.Logica.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Usuario\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\Usuario\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\Usuario\\.nuget\\packages\\system.data.sqlclient\\4.9.0\\system.data.sqlclient.4.9.0.nupkg.sha512"
   ],
   "logs": []
 }

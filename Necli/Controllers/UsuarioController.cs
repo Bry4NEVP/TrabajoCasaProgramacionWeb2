@@ -1,27 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Necli.Entidades;
+using Necli.Logica;
+using Necli.Logica.Dto;
 
 namespace Necli.Presentacion.Controllers
 {
     public class UsuarioController : Controller
     {
-        private readonly IUsuarioService _usuarioService;
-
-        public UsuarioController(IUsuarioService usuarioService)
-        {
-            _usuarioService = usuarioService;
-        }
+        private readonly UsuarioService _usuarioService = new();
 
         // Consultar usuario por identificación
         [HttpGet("{identificacion}")]
         public IActionResult ConsultarUsuario(string identificacion)
         {
-            var usuario = _usuarioService.ConsultarUsuario(identificacion);
-            if (usuario == null)
+            try
             {
-                return NotFound(new { mensaje = "Usuario no encontrado." });
+                var usuario = _usuarioService.ObtenerUsuario(identificacion);
+                return Ok(usuario);
             }
-
-            return Ok(usuario);
+            catch (Exception)
+            {
+                return BadRequest(new { mensaje = "Ocurrió un error al procesar la solicitud. Intente nuevamente más tarde." });
+            }
         }
 
         // Actualizar datos del usuario
@@ -35,7 +35,16 @@ namespace Necli.Presentacion.Controllers
 
             try
             {
-                bool actualizado = _usuarioService.ActualizarUsuario(usuario);
+                var usuarioDto = new UsuarioDto
+                {
+                    Identificacion = usuario.Identificacion,
+                    Nombres = usuario.Nombres,
+                    Apellidos = usuario.Apellidos,
+                    Email = usuario.Email,
+                    NumeroTelefono = usuario.NumeroTelefono
+                };
+
+                bool actualizado = _usuarioService.ActualizarUsuario(usuarioDto);
                 if (!actualizado)
                 {
                     return BadRequest(new { mensaje = "No se pudo actualizar el usuario." });
@@ -49,4 +58,4 @@ namespace Necli.Presentacion.Controllers
             }
         }
     }
-}
+    }

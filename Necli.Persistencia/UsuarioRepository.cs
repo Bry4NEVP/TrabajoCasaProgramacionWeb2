@@ -1,6 +1,7 @@
 ﻿using Necli.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,34 +12,6 @@ namespace Necli.Persistencia
     {
         private readonly string _cadena_conexion = "Server=SJLBA01SALAA18\\SQLEXPRESS; Database=VehiGestion;User ID=sa;Password=cecar; TrustServerCertificate=True;";
         private string sql;
-
-        public bool RegistrarUsuario(Usuario usuario)
-        {
-
-
-            using (var conexion = new SqlConnection(_cadena_conexion))
-            {
-
-                sql = @"INSERT INTO Usuario(Identificacion, Contrasena, Nombres, Apellidos, Email, NumeroTelefono)
-                    VALUES(@Identificacion, @Contrasena, @Nombres, @Apellidos, @Email, @NumeroTelefono)";
-
-
-                using (var comando = new SqlCommand(sql, conexion))
-                {
-                    comando.Parameters.AddWithValue("@Identificacion", usuario.Identificacion);
-                    comando.Parameters.AddWithValue("@Contrasena", usuario.Contrasena);
-                    comando.Parameters.AddWithValue("@Nombres", usuario.Nombres);
-                    comando.Parameters.AddWithValue("@Apellidos", usuario.Apellidos);
-                    comando.Parameters.AddWithValue("@Email", usuario.Email);
-                    comando.Parameters.AddWithValue("@NumeroTelefono", usuario.NumeroTelefono);
-                    conexion.Open();
-                    comando.ExecuteNonQuery();
-                }
-
-            }
-            return true;
-
-        }
         public bool ActualizarUsuario(Usuario usuario)
         {
             using (var conexion = new SqlConnection(_cadena_conexion))
